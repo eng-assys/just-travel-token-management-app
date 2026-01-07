@@ -5,6 +5,7 @@ import * as service from '@/services/tokens.service';
 interface TokensState {
   tokens: Token[];
   totalTokens: number;
+  lastClaimedToken: Token | null | undefined;
   loading: boolean;
   error?: string;
   status?: string;
