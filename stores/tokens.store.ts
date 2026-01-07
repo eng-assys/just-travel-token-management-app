@@ -23,9 +23,8 @@ export const useTokensStore = create<TokensState>((set, get) => ({
   status: undefined,
 
   fetchTokens: async (status?: string) => {
-    set({ loading: true, error: undefined, status });
-
     try {
+      set({ tokens: [], loading: true, error: undefined, status });
       const response = await service.listTokens(status);
       set({ tokens: response.items, totalTokens: response.meta.total });
     } catch {
