@@ -5,8 +5,9 @@ import * as service from '@/services/tokens.service';
 interface TokensState {
   tokens: Token[];
   totalTokens: number;
+  loadingTokens: boolean;
   lastClaimedToken: Token | null | undefined;
-  loading: boolean;
+  loadingClaim: boolean;
   error?: string;
   status?: string;
 
@@ -18,25 +19,26 @@ export const useTokensStore = create<TokensState>((set, get) => ({
   tokens: [],
   totalTokens: 0,
   lastClaimedToken: undefined,
-  loading: false,
+  loadingTokens: false,
+  loadingClaim: false,
   error: undefined,
   status: undefined,
 
   fetchTokens: async (status?: string) => {
     try {
-      set({ tokens: [], loading: true, error: undefined, status });
+      set({ tokens: [], totalTokens: 0, loadingTokens: true, error: undefined, status });
       const response = await service.listTokens(status);
       set({ tokens: response.items, totalTokens: response.meta.total });
     } catch {
       set({ error: 'Erro ao carregar lista de tokens' });
     } finally {
-      set({ loading: false });
+      set({ loadingTokens: false });
     }
   },
 
   claimToken: async (userId: string) => {
     try {
-      set({ loading: true, error: undefined, lastClaimedToken: null });
+      set({ loadingClaim: true, error: undefined, lastClaimedToken: null });
       const response = await service.claimToken(userId);
       const { status, fetchTokens } = get();
       await fetchTokens(status);
@@ -44,7 +46,7 @@ export const useTokensStore = create<TokensState>((set, get) => ({
     } catch {
       set({ error: 'Erro ao realizar requisição de Token' });
     } finally {
-      set({ loading: false });
+      set({ loadingClaim: false });
     }
   },
 }));

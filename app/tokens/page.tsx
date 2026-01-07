@@ -7,14 +7,14 @@ import Card from '@/components/ui/Card';
 import { useTokensStore } from '@/stores/tokens.store';
 
 export default function TokensPage() {
-  const { loading, error } = useTokensStore();
+  const { loadingTokens, loadingClaim, error } = useTokensStore();
 
   return (
     <main>
       <h1>Tokens</h1>
 
       {/* Error state */}
-      {!loading && error && (
+      {!loadingTokens && !loadingClaim && error && (
         <p style={{ color: 'red' }}>{error}</p>
       )}
 

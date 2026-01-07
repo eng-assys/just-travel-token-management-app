@@ -9,7 +9,7 @@ import { formatDate } from '@/utils/formatDate';
 export default function ClaimTokenForm() {
   const [userId, setUserId] = useState('');
 
-  const { lastClaimedToken, claimToken, loading } = useTokensStore();
+  const { lastClaimedToken, claimToken, loadingClaim } = useTokensStore();
 
   async function handleSubmit() {
     if (!userId) return;
@@ -26,8 +26,8 @@ export default function ClaimTokenForm() {
         onChange={(e: any) => setUserId(e.target.value)}
       />
 
-      <Button onClick={handleSubmit} disabled={loading}>
-        {loading ? 'Solicitando...' : 'Solicitar Token'}
+      <Button onClick={handleSubmit} disabled={loadingClaim}>
+        {loadingClaim ? 'Solicitando...' : 'Solicitar Token'}
       </Button>
 
       {lastClaimedToken && (
