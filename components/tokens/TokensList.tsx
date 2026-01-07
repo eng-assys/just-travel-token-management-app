@@ -6,7 +6,7 @@ import TokenRow from './TokenRow';
 import Button from '@/components/ui/Button';
 
 export default function TokensList() {
-  const { tokens, totalTokens, fetchTokens, loading, error } = useTokensStore();
+  const { tokens, totalTokens, fetchTokens, loading } = useTokensStore();
   const [status, setStatus] = useState<string>();
 
   useEffect(() => {
@@ -32,13 +32,8 @@ export default function TokensList() {
       {/* Loading state */}
       {loading && <p>Carregando tokens...</p>}
 
-      {/* Error state */}
-      {!loading && error && (
-        <p style={{ color: 'red' }}>{error}</p>
-      )}
-
       {/* Empty state */}
-      {!loading && !error && tokens.length === 0 && (
+      {!loading && tokens.length === 0 && (
         <p style={{ color: '#666' }}>
           Nenhum token {status === 'ACTIVE'
             ? 'ativo'
@@ -49,7 +44,7 @@ export default function TokensList() {
       )}
 
       {/* List */}
-      {!loading && !error && tokens.length > 0 && (
+      {!loading && tokens.length > 0 && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           {tokens.map(token => (
             <TokenRow key={token.id} token={token} />
