@@ -27,9 +27,12 @@ export default function TokensList() {
 
       {loading && <p>Carregando...</p>}
 
-      {tokens.map(token => (
-        <TokenRow key={token.id} token={token} />
-      ))}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+        {tokens.map(token => (
+          <TokenRow key={token.id} token={token} />
+        ))}
+      </div>
+
     </div>
   );
 }
