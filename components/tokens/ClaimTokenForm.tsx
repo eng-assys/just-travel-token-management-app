@@ -1,23 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { claimToken } from '@/services/tokens.service';
+import { useTokensStore } from '@/stores/tokens.store';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
+import { formatDate } from '@/utils/formatDate';
 
 export default function ClaimTokenForm() {
   const [userId, setUserId] = useState('');
-  const [result, setResult] = useState<any>(null);
-  const [error, setError] = useState<string>();
+
+  const { lastClaimedToken, claimToken, loading, error } = useTokensStore();
 
   async function handleSubmit() {
-    try {
-      setError(undefined);
-      const data = await claimToken(userId);
-      setResult(data);
-    } catch {
-      setError('Erro ao solicitar token');
-    }
+    if (!userId) return;
+    await claimToken(userId);
   }
 
   return (
@@ -30,11 +26,18 @@ export default function ClaimTokenForm() {
         onChange={(e: any) => setUserId(e.target.value)}
       />
 
-      <Button onClick={handleSubmit}>Solicitar Token</Button>
+      <Button onClick={handleSubmit} disabled={loading}>
+        {loading ? 'Solicitando...' : 'Solicitar Token'}
+      </Button>
 
-      {error && <p>{error}</p>}
-      {result && (
-        <pre>{JSON.stringify(result, null, 2)}</pre>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+
+      {lastClaimedToken && (
+        <div style={{ marginTop: 12 }}>
+          <p><strong>Token:</strong> {lastClaimedToken.id}</p>
+          <p><strong>Atualizado em:</strong> {formatDate(lastClaimedToken.updatedAt)}</p>
+          <p><strong>Usuário Atual:</strong> {lastClaimedToken.currentUserId}</p>
+        </div>
       )}
     </div>
   );
