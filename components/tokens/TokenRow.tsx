@@ -6,7 +6,7 @@ export default function TokenRow({ token }: { token: Token }) {
   return (
     <div>
       <Link href={`/tokens/${token.id}`}>{token.id}</Link>
-      <Badge label={token.status} />
+      <Badge status={token.status} />
     </div>
   );
 }
