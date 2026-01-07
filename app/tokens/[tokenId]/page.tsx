@@ -1,4 +1,5 @@
 import { getTokenById, getTokenHistory } from '@/services/tokens.service';
+import TokenHistory from '@/components/tokens/TokenHistory';
 import BackButton from '@/components/ui/BackButton';
 
 interface TokenPageProps {
@@ -25,6 +26,8 @@ export default async function TokenPage({ params }: TokenPageProps) {
         <p><strong>Updated At:</strong> {token.updatedAt ?? '-'}</p>
 
         <hr />
+
+        <TokenHistory history={history} />
     </div>
   );
 }
