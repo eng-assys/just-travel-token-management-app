@@ -1,0 +1,12 @@
+'use client';
+
+export default function Button({ children, ...props }: any) {
+  return (
+    <button
+      {...props}
+      style={{ padding: '8px 12px', cursor: 'pointer' }}
+    >
+      {children}
+    </button>
+  );
+}
