@@ -1,4 +1,5 @@
 import { TokenHistoryItem } from '@/types/token';
+import { formatDate } from '@/utils/formatDate';
 
 interface TokenHistoryProps {
   history: TokenHistoryItem[];
@@ -23,8 +24,8 @@ export default function TokenHistory({ history }: TokenHistoryProps) {
         <thead>
           <tr>
             <th align="left">User ID</th>
-            <th align="left">Activated At</th>
-            <th align="left">Released At</th>
+            <th align="left">Ativado em</th>
+            <th align="left">Liberado em</th>
           </tr>
         </thead>
 
@@ -32,8 +33,8 @@ export default function TokenHistory({ history }: TokenHistoryProps) {
           {history.map((item, index) => (
             <tr key={index}>
               <td>{item.userId}</td>
-              <td>{item.activatedAt}</td>
-              <td>{item.releasedAt ?? '-'}</td>
+              <td>{formatDate(item.activatedAt)}</td>
+              <td>{formatDate(item.releasedAt)}</td>
             </tr>
           ))}
         </tbody>

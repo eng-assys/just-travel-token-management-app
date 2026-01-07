@@ -25,9 +25,9 @@ export default function ClaimTokenForm() {
       <h2>Requisitar Token</h2>
 
       <Input
-        placeholder="User ID (UUID)"
+        placeholder="ID do Usuário (UUID)"
         value={userId}
-        onChange={(e) => setUserId(e.target.value)}
+        onChange={(e: any) => setUserId(e.target.value)}
       />
 
       <Button onClick={handleSubmit}>Solicitar Token</Button>

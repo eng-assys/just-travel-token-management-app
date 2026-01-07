@@ -1,6 +1,7 @@
 import { getTokenById, getTokenHistory } from '@/services/tokens.service';
 import TokenHistory from '@/components/tokens/TokenHistory';
 import BackButton from '@/components/ui/BackButton';
+import { formatDate } from '@/utils/formatDate';
 
 interface TokenPageProps {
   params: Promise<{
@@ -22,8 +23,8 @@ export default async function TokenPage({ params }: TokenPageProps) {
 
         <p><strong>ID:</strong> {token.id}</p>
         <p><strong>Status:</strong> {token.status}</p>
-        <p><strong>Current User:</strong> {token.currentUserId ?? '-'}</p>
-        <p><strong>Updated At:</strong> {token.updatedAt ?? '-'}</p>
+        <p><strong>Usuário Atual:</strong> {token.currentUserId ?? '-'}</p>
+        <p><strong>Última Atualização:</strong> {formatDate(token.updatedAt)}</p>
 
         <hr />
 
