@@ -6,7 +6,7 @@ import TokenRow from './TokenRow';
 import Button from '@/components/ui/Button';
 
 export default function TokensList() {
-  const { tokens, fetchTokens, loading, error } = useTokensStore();
+  const { tokens, totalTokens, fetchTokens, loading, error } = useTokensStore();
   const [status, setStatus] = useState<string>();
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function TokensList() {
 
   return (
     <div>
-      <h2>Tokens</h2>
+      <h2>Tokens {status && status == 'AVAILABLE' ? 'Disponíveis' : status == 'ACTIVE' ? 'Ativos' : ''} ({totalTokens || 0})</h2>
 
       <div style={{ marginBottom: 12 }}>
         <select onChange={(e) => setStatus(e.target.value)}>

@@ -12,7 +12,7 @@ export default function TokensPage() {
         <ClearActiveTokensButton />
       </Card>
 
-      <Card title="Tokens">
+      <Card title="Lista de Tokens">
         <TokensList />
       </Card>
 
