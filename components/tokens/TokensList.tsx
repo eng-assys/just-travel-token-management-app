@@ -48,9 +48,7 @@ export default function TokensList() {
       {!loadingTokens && tokens.length > 0 && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           {tokens.map(token => (
-            <Card title="">
-              <TokenRow key={token.id} token={token} />
-            </Card>
+            <TokenRow key={token.id} token={token} />
           ))}
         </div>
       )}
