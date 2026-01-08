@@ -22,7 +22,7 @@ export default async function TokenPage({ params }: TokenPageProps) {
         <h1>Detalhes do Token</h1>
 
         <p><strong>ID:</strong> {token.id}</p>
-        <p><strong>Status:</strong> {token.status}</p>
+        <p><strong>Status:</strong> {token.status === 'AVAILABLE' ? 'Disponível' : token.status === 'ACTIVE' ? 'Ativo' : 'Desativado'}</p>
         <p><strong>Usuário Atual:</strong> {token.currentUserId ?? '-'}</p>
         <p><strong>Última Atualização:</strong> {formatDate(token.updatedAt)}</p>
 

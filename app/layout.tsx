@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Gerenciamento de Tokens',
+  title: 'Tokens Management - Just Travel',
   description: 'Sistema de Gerenciamento de Tokens - Just Travel challenge',
 };
 
@@ -27,7 +27,7 @@ export default function RootLayout({
             color: '#fff',
           }}
         >
-          <strong>Gerenciamento de Tokens</strong>
+          <strong>Just Travel</strong>
         </header>
 
         <main

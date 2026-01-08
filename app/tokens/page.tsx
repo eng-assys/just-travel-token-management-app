@@ -11,7 +11,7 @@ export default function TokensPage() {
 
   return (
     <main>
-      <h1>Tokens</h1>
+      <h1>Gerenciamento de Tokens</h1>
 
       {/* Error state */}
       {!loadingTokens && !loadingClaim && error && (
