@@ -8,11 +8,13 @@ interface TokensState {
   loadingTokens: boolean;
   lastClaimedToken: Token | null | undefined;
   loadingClaim: boolean;
+  loadingClearActiveTokens: boolean;
   error?: string;
   status?: string;
 
   fetchTokens: (status?: string) => Promise<void>;
   claimToken: (userId: string) => Promise<void>;
+  clearActiveTokens: () => Promise<void>;
 }
 
 export const useTokensStore = create<TokensState>((set, get) => ({
@@ -21,6 +23,7 @@ export const useTokensStore = create<TokensState>((set, get) => ({
   lastClaimedToken: undefined,
   loadingTokens: false,
   loadingClaim: false,
+  loadingClearActiveTokens: false,
   error: undefined,
   status: undefined,
 
@@ -47,6 +50,19 @@ export const useTokensStore = create<TokensState>((set, get) => ({
       set({ error: 'Erro ao realizar requisição de Token' });
     } finally {
       set({ loadingClaim: false });
+    }
+  },
+
+  clearActiveTokens: async () => {
+    try {
+      set({ loadingClearActiveTokens: true, loadingTokens: true, error: undefined });
+      await service.clearActiveTokens();
+      const { status, fetchTokens } = get();
+      await fetchTokens(status);
+    } catch {
+      set({ error: 'Erro ao limpar tokens ativos' });
+    } finally {
+      set({ loadingClearActiveTokens:false, loadingTokens: false });
     }
   },
 }));

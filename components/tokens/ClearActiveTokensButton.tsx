@@ -1,21 +1,18 @@
 'use client';
 
 import Button from '@/components/ui/Button';
-import { clearActiveTokens } from '@/services/tokens.service';
+import { useTokensStore } from '@/stores/tokens.store';
 
 export default function ClearActiveTokensButton() {
+  const { loadingClearActiveTokens, clearActiveTokens } = useTokensStore();
+
   async function handleClear() {
-    try {
-      await clearActiveTokens();
-      alert('Tokens limpos com sucesso');
-    } catch {
-      alert('Erro ao limpar tokens');
-    }
+    await clearActiveTokens();
   }
 
   return (
-    <Button onClick={handleClear}>
-      Limpar Tokens Ativos
+    <Button onClick={handleClear} disabled={loadingClearActiveTokens}>
+      {loadingClearActiveTokens ? 'Limpando...' : 'Limpar Tokens Ativos'}
     </Button>
   );
 }
