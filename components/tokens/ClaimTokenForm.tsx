@@ -81,6 +81,11 @@ export default function ClaimTokenForm() {
                 </p>
 
                 <p>
+                  <strong>Liberação Forçada?:</strong>{' '}
+                  {lastClaimedToken.isTokenReleasedFromOlderActivation ? 'Sim' : 'Não'}
+                </p>
+
+                <p>
                   <strong>Atualizado em:</strong>{' '}
                   {formatDate(lastClaimedToken.updatedAt)}
                 </p>

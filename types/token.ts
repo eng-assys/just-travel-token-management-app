@@ -5,6 +5,7 @@ export interface Token {
   status: TokenStatus;
   updatedAt?: string;
   currentUserId?: string;
+  isTokenReleasedFromOlderActivation?: boolean;
 }
 
 export interface TokenHistoryItem {
