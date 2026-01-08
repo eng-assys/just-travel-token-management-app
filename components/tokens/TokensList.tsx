@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useTokensStore } from '@/stores/tokens.store';
 import TokenRow from './TokenRow';
 import Button from '@/components/ui/Button';
+import Card from '../ui/Card';
 
 export default function TokensList() {
   const { tokens, totalTokens, fetchTokens, loadingTokens } = useTokensStore();
@@ -47,7 +48,9 @@ export default function TokensList() {
       {!loadingTokens && tokens.length > 0 && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           {tokens.map(token => (
-            <TokenRow key={token.id} token={token} />
+            <Card title="">
+              <TokenRow key={token.id} token={token} />
+            </Card>
           ))}
         </div>
       )}
