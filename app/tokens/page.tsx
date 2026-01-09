@@ -14,7 +14,6 @@ export default function TokensPage() {
     <main>
       <h1>Gerenciamento de Tokens</h1>
 
-      {/* Error state */}
       {!loadingTokens && !loadingClaim && !loadingClearActiveTokens && message && (
         <Message text={message.text} isError={message.isError} />
       )}
