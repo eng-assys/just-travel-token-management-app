@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { useTokensStore } from '@/stores/tokens.store';
 import TokenRow from './TokenRow';
 import Button from '@/components/ui/Button';
-import Card from '../ui/Card';
 
 export default function TokensList() {
   const { tokens, totalTokens, fetchTokens, loadingTokens } = useTokensStore();
