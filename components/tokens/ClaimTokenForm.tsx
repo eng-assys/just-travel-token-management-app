@@ -27,34 +27,24 @@ export default function ClaimTokenForm() {
           marginTop: 24,
         }}
       >
-        {/* Requisitar Token */}
-        <div style={{ flex: 1 }}>
+        {/* Claim Token */}
+        <div style={{ flex: 2 }}>
           <Card title="Requisitar Token">
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 12,
-              }}
-            >
-              <Input
-                placeholder="ID do Usuário (UUID)"
-                value={userId}
-                onChange={(e: any) => setUserId(e.target.value)}
-              />
+          <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+            <Input
+              placeholder="ID do Usuário (UUID)"
+              value={userId}
+              onChange={(e: any) => setUserId(e.target.value)}
+            />
 
-              <Button
-                onClick={handleSubmit}
-                disabled={loadingClaim}
-                style={{ alignSelf: 'flex-start' }}
-              >
-                {loadingClaim ? 'Solicitando...' : 'Solicitar Token'}
-              </Button>
-            </div>
-          </Card>
+            <Button onClick={handleSubmit} disabled={loadingClaim}>
+              {loadingClaim ? 'Solicitando...' : 'Solicitar Token'}
+            </Button>
+          </div>
+        </Card>
         </div>
 
-        {/* Último Token */}
+        {/* Last Token */}
         <div style={{ flex: 1 }}>
           <Card title="Último Token Requisitado">
             {lastClaimedToken ? (
