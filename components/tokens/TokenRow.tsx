@@ -1,24 +1,24 @@
-import Link from 'next/link';
-import Card from '@/components/ui/Card';
-import Badge from '@/components/ui/Badge';
-import { Token } from '@/types/token';
+'use client';
 
-export default function TokenRow({ token }: { token: Token }) {
+import Button from '@/components/ui/Button';
+import type { Token } from '@/types/token';
+import Badge from '../ui/Badge';
+
+export default function TokenRow({
+  token,
+  onOpenDetails,
+}: {
+  token: Token;
+  onOpenDetails: () => void;
+}) {
   return (
-    <Card>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}
-      >
-        <Link href={`/tokens/${token.id}`}>
-          {token.id}
-        </Link>
-
+    <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, alignItems: 'center' }}>
+      <div>
+        <span>{token.id}</span>
         <Badge status={token.status} />
       </div>
-    </Card>
+
+      <Button onClick={onOpenDetails}>Detalhes</Button>
+    </div>
   );
 }
