@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Just Travel – Frontend Challenge
 
-## Getting Started
+This is a **Next.js application** built to solve the **Just Travel Frontend Challenge**.  
+The application provides a complete interface for managing tokens, including claiming, listing, viewing details, and tracking usage history.
 
-First, run the development server:
+---
+
+## 🚀 Getting Started (Without Docker)
+
+### Prerequisites
+- **Node.js version:** `24.12.0` (recommended)
+
+---
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+---
+
+### Run Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open your browser and access:  
+👉 **http://localhost:3000**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## ✨ Features
 
-To learn more about Next.js, take a look at the following resources:
+### 🔑 Claim Token
+- Input field for `userId` (UUID)
+- Button to request a token
+- Displays the result:
+  - `tokenId`
+  - `activatedAt`
+  - `expiresAt`
+- Success and error feedback messages
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 📋 Token List
+- View **available** and **active** tokens
+- Filter tokens by status (`available` / `active`)
+- Reload button to refresh the list
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 🔍 Token Details
+- Display token information
+- Show the active user (if any)
+- Access the token usage history
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+### 🕒 Token Usage History
+- List of token usages with:
+  - `userId`
+  - `activatedAt`
+  - `releasedAt`
+
+---
+
+### 🧹 Clear Active Tokens
+- Button to call the `/tokens/clear-active` endpoint
+- Success and error feedback messages
+
+---
