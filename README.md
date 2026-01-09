@@ -18,6 +18,11 @@ The application provides a complete interface for managing tokens, including cla
 npm install
 ```
 
+### Copy Environment File
+```bash
+cp .env.example .env
+```
+
 ---
 
 ### Run Development Server
@@ -32,6 +37,39 @@ Open your browser and access:
 👉 **http://localhost:3000**
 
 ---
+
+## 🚀 Getting Started (With Docker)
+
+### Prerequisites
+- Docker and Docker-compose (required)
+
+---
+
+### Copy Environment File
+```bash
+cp .env.example .env
+```
+
+---
+
+### Run Server
+
+```bash
+docker-compose up
+```
+
+### Rebuild Docker
+```bash
+docker-compose up --build
+```
+
+---
+
+Open your browser and access:  
+👉 **http://localhost:3000**
+
+---
+
 
 ## ✨ Features
 
